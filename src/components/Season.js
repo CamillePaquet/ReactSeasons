@@ -1,4 +1,5 @@
 import Button from './Button.js';
+
 const seasons = [
     {id: "Hiver", fin: "19/3/2022", debut: "21/12/2021"},
     {id: "Printemps", fin: "20/6/2022", debut: "20/3/2022"},
@@ -8,7 +9,9 @@ const seasons = [
 
   
 
-function Season(){
+function Season(props){
+
+    const today = props.today;
 
     function calcSeason () {
         var res;
@@ -22,17 +25,19 @@ function Season(){
        return res;
     }
 
-    var today = new Date();
-    let seasonActual = calcSeason();
+    const seasonActual = calcSeason();
+  
     let joursRestants = Math.ceil((today - new Date(seasonActual.debut.split('/')[2],seasonActual.debut.split('/')[1]-1,seasonActual.debut.split('/')[0]))/(1000 * 60 * 60 * 24));
+
 
     return (
         <div>
         <h1>{`${seasonActual.id}`}</h1>
         <p>Depuis {`${joursRestants}`} jours</p>
-        <Button></Button>
+        <Button showModal={props.showModal}></Button>
         </div>
     );
+
 
 };
 

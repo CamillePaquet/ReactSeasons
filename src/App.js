@@ -1,31 +1,27 @@
 
 import Season from './components/Season.js';
 import './App.css'
-
-function padTo2Digits(num) {
-    return num.toString().padStart(2, '0');
-  }
-  
-  function formatDate(date) {
-    return [
-      padTo2Digits(date.getDate()),
-      padTo2Digits(date.getMonth() + 1),
-      date.getFullYear(),
-    ].join('/');
-  }
-
-  
- 
-
+import Modal from './components/Modal.js';
+import { useState } from "react";
 
 
 function App() {
 
+    const [modalIsVisible, setModalIsVisible] = useState(false);
+
+    var today = new Date();
+
+    function showModal() {
+        setModalIsVisible(!modalIsVisible);
+    }
+
+
+
     return (
         <div className="App">
             <img src="./assets/seasons.svg" alt="" />
-            <Season></Season>
-            
+            { (modalIsVisible) ? <Modal today={today}></Modal> : <Season today={today} showModal={showModal} ></Season>}
+     
         </div>
     );
 }
