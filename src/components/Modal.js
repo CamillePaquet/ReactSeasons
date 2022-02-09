@@ -22,7 +22,6 @@ function Modal(props){
        return res;
     } 
 
-
     let seasonNext = calcNextSeason();
     let joursRestants = Math.ceil((new Date(seasonNext.debut.split('/')[2],seasonNext.debut.split('/')[1]-1,seasonNext.debut.split('/')[0]) - today)/(1000 * 60 * 60 * 24));
     let duree = Math.ceil((new Date(seasonNext.fin.split('/')[2],seasonNext.fin.split('/')[1]-1,seasonNext.fin.split('/')[0]) - new Date(seasonNext.debut.split('/')[2],seasonNext.debut.split('/')[1]-1,seasonNext.debut.split('/')[0]) )/(1000 * 60 * 60 * 24));
