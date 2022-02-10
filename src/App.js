@@ -1,30 +1,21 @@
 import Season from "./components/Season.js";
 import "./App.css";
+import React, { lazy, Suspense } from "react";
 
-import Modal from "./components/Modal.js";
-import { useState } from "react";
 import logo from "../assets/seasons.svg";
 
 function App() {
-  const [modalIsVisible, setModalIsVisible] = useState(false);
-
   var today = new Date();
 
-  function showModal() {
-    setModalIsVisible(!modalIsVisible);
-  }
-
-  /* ajouter lazy loading
-mettre bouton dans modal */
+  const Modal = lazy(() => import("./components/Modal"));
 
   return (
     <div className="App">
-      <img src={logo} alt="" />
-      {modalIsVisible ? (
-        <Modal today={today} showModal={showModal}></Modal>
-      ) : (
-        <Season today={today} showModal={showModal}></Season>
-      )}
+      <img className="logo" src={logo} alt="" />
+      <Season today={today}></Season>
+      <Suspense fallback={<div>Chargement...</div>}>
+        <Modal today={today}></Modal>
+      </Suspense>
     </div>
   );
 }
