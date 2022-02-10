@@ -12,7 +12,7 @@
     "prepare": "husky install",
     "commit": "git-cz",
     "lint": "eslint src",
-    "test": "jest"
+    "test": "jest --watchAll --coverage"
   },
   "devDependencies": {
     "@babel/core": "^7.17.2",
@@ -49,6 +49,10 @@
     "testEnvironment": "jsdom",
     "moduleNameMapper": {
       "\\.css$": "identity-obj-proxy"
-    }
+    },
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!**/node_modules/**"
+    ]
   }
 }
