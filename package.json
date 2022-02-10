@@ -53,6 +53,10 @@
     "collectCoverageFrom": [
       "src/**/*.js",
       "!**/node_modules/**"
+    ],
+    "coverageReporters": [
+      "text-summary",
+      "lcov"
     ]
   }
 }

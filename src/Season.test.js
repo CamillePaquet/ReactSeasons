@@ -4,10 +4,19 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 describe(Season.name, () => {
-  it("renders a title Winter", () => {
-    render(<Season today={new Date(2022, 1, 10)} showModal={null}></Season>);
+  beforeAll(() => {
+    jest.useFakeTimers("modern");
+    jest.setSystemTime(new Date(2022, 1, 10));
+  });
+  it("renders a title `Winter`", () => {
+    render(<Season today={new Date()}></Season>);
     expect(screen.getByText("Hiver")).toBeInTheDocument();
   });
-  it.skip("renders a title `Winter`", () => {});
-  it.skip("renders a text `99 days`", () => {});
+  it("renders a paragraphe text `Depuis 51 jours`", () => {
+    render(<Season today={new Date()}></Season>);
+    expect(screen.getByText("Depuis 51 jours")).toBeInTheDocument();
+  });
+  afterAll(() => {
+    jest.useRealTimers();
+  });
 });
