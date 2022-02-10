@@ -1,5 +1,6 @@
 import React from "react";
 import "./Season.css";
+
 const seasons = [
   { id: "Hiver", fin: "19/3/2022", debut: "21/12/2021" },
   { id: "Printemps", fin: "20/6/2022", debut: "20/3/2022" },
