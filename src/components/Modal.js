@@ -1,3 +1,5 @@
+import Button from "./Button";
+
 const seasons = [
     {id: "Hiver", fin: "19/3/2022", debut: "21/12/2021"},
     {id: "Printemps", fin: "20/6/2022", debut: "20/3/2022"},
@@ -32,6 +34,7 @@ function Modal(props){
             <h1>{`${seasonNext.id}`}</h1>
             <p>{`${duree}`} jours</p>
             <p> dans {`${joursRestants}`} jours</p>
+            <Button showModal={props.showModal} text="Ok"></Button>
             </div>
         </>
     );

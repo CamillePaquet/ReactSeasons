@@ -16,13 +16,13 @@ function App() {
         setModalIsVisible(!modalIsVisible);
     }
 
-
+/* ajouter lazy loading
+mettre bouton dans modal */
 
     return (
         <div className="App">
             <img src={logo} alt="" />
-            { (modalIsVisible) ? <Modal today={today}></Modal> : <Season today={today} showModal={showModal} ></Season>}
-     
+            { (modalIsVisible) ? <Modal today={today} showModal={showModal}></Modal> : <Season today={today} showModal={showModal} ></Season>}
         </div>
     );
 }

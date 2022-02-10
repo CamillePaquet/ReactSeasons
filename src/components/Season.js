@@ -34,7 +34,7 @@ function Season(props){
         <div>
         <h1>{`${seasonActual.id}`}</h1>
         <p>Depuis {`${joursRestants}`} jours</p>
-        <Button showModal={props.showModal}></Button>
+        <Button showModal={props.showModal} text="Et après ?"></Button>
         </div>
     );
 
