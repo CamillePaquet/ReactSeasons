@@ -1,6 +1,5 @@
-import Button from "./Button.js";
 import React from "react";
-
+import "./Season.css";
 const seasons = [
   { id: "Hiver", fin: "19/3/2022", debut: "21/12/2021" },
   { id: "Printemps", fin: "20/6/2022", debut: "20/3/2022" },
@@ -44,10 +43,9 @@ function Season(props) {
   );
 
   return (
-    <div>
-      <h1>{`${seasonActual.id}`}</h1>
-      <p>Depuis {`${joursRestants}`} jours</p>
-      <Button showModal={props.showModal} text="Et après ?"></Button>
+    <div className="Season-container">
+      <h1 className="Season-title">{`${seasonActual.id}`}</h1>
+      <p className="Season-jours-restants">Depuis {`${joursRestants}`} jours</p>
     </div>
   );
 }

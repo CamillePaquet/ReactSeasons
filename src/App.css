@@ -5,3 +5,8 @@
   align-items: center;
   height: 100vh;
 }
+
+.logo {
+  width: 200px;
+  height: auto;
+}

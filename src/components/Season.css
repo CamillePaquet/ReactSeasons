@@ -1,0 +1,15 @@
+.Season-container {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Season-title {
+  color: rgb(36, 68, 77);
+  margin: 0;
+}
+
+.Season-jours-restants {
+  color: rgb(36, 68, 77);
+}

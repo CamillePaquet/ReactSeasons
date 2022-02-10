@@ -1,5 +1,5 @@
-import Button from "./Button";
-import React from "react";
+import { useState, React } from "react";
+import "./Modal.css";
 
 const seasons = [
   { id: "Hiver", fin: "19/3/2022", debut: "21/12/2021" },
@@ -10,6 +10,7 @@ const seasons = [
 
 function Modal(props) {
   const today = props.today;
+  const [isVisible, setIsVisible] = useState(false);
 
   function calcNextSeason() {
     var res;
@@ -32,6 +33,7 @@ function Modal(props) {
   }
 
   let seasonNext = calcNextSeason();
+
   let joursRestants = Math.ceil(
     (new Date(
       seasonNext.debut.split("/")[2],
@@ -55,15 +57,26 @@ function Modal(props) {
       (1000 * 60 * 60 * 24)
   );
 
-  return (
-    <>
-      <div>
-        <h1>{`${seasonNext.id}`}</h1>
-        <p>{`${duree}`} jours</p>
-        <p> dans {`${joursRestants}`} jours</p>
-        <Button showModal={props.showModal} text="Ok"></Button>
+  function setVisibility() {
+    setIsVisible(!isVisible);
+  }
+
+  if (isVisible)
+    return (
+      <div className="Modal-container">
+        <h1 className="Modal-titre">{`${seasonNext.id}`}</h1>
+        <p className="Modal-duree">{`${duree}`} jours</p>
+        <p className="Modal-restant"> dans {`${joursRestants}`} jours</p>
+        <button className="Button-modal" onClick={setVisibility}>
+          Ok, je vais être patient !
+        </button>
       </div>
-    </>
+    );
+
+  return (
+    <button className="Button-modal" onClick={setVisibility}>
+      Et après ?
+    </button>
   );
 }
 
