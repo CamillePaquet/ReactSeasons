@@ -6,7 +6,7 @@
     "source": "src/index.html",
     "scripts": {
         "start": "parcel",
-        "build": "rimraf dist && parcel build"
+        "build": "rimraf dist && parcel build --reporter @parcel/reporter-bundle-analyzer"
     },
     "devDependencies": {
         "@parcel/reporter-bundle-analyzer": "^2.3.0",
