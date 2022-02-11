@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Modal.css";
+import { formatDistanceToNowStrict, formatDistanceStrict } from "date-fns";
 
 const seasons = [
   { id: "Hiver", fin: "19/3/2022", debut: "21/12/2021" },
@@ -34,28 +35,33 @@ function Modal(props) {
 
   let seasonNext = calcNextSeason();
 
-  let joursRestants = Math.ceil(
-    (new Date(
+  let joursRestants = formatDistanceToNowStrict(
+    new Date(
       seasonNext.debut.split("/")[2],
       seasonNext.debut.split("/")[1] - 1,
       seasonNext.debut.split("/")[0]
-    ) -
-      today) /
-      (1000 * 60 * 60 * 24)
-  );
-  let duree = Math.ceil(
-    (new Date(
+    ),
+    {
+      unit: "day",
+      addSuffix: true,
+    }
+  ).split(" ")[1];
+
+  let duree = formatDistanceStrict(
+    new Date(
+      seasonNext.debut.split("/")[2],
+      seasonNext.debut.split("/")[1] - 1,
+      seasonNext.debut.split("/")[0]
+    ),
+    new Date(
       seasonNext.fin.split("/")[2],
       seasonNext.fin.split("/")[1] - 1,
       seasonNext.fin.split("/")[0]
-    ) -
-      new Date(
-        seasonNext.debut.split("/")[2],
-        seasonNext.debut.split("/")[1] - 1,
-        seasonNext.debut.split("/")[0]
-      )) /
-      (1000 * 60 * 60 * 24)
-  );
+    ),
+    {
+      unit: "day",
+    }
+  ).split(" ")[0];
 
   function setVisibility() {
     setIsVisible(!isVisible);

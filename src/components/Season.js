@@ -1,5 +1,6 @@
 import React from "react";
 import "./Season.css";
+import { formatDistanceToNowStrict } from "date-fns";
 
 const seasons = [
   { id: "Hiver", fin: "19/3/2022", debut: "21/12/2021" },
@@ -33,20 +34,22 @@ function Season(props) {
 
   const seasonActual = calcSeason();
 
-  let joursRestants = Math.ceil(
-    (today -
-      new Date(
-        seasonActual.debut.split("/")[2],
-        seasonActual.debut.split("/")[1] - 1,
-        seasonActual.debut.split("/")[0]
-      )) /
-      (1000 * 60 * 60 * 24)
-  );
+  let joursRestants = formatDistanceToNowStrict(
+    new Date(
+      seasonActual.debut.split("/")[2],
+      seasonActual.debut.split("/")[1] - 1,
+      seasonActual.debut.split("/")[0]
+    ),
+    { unit: "day", addSuffix: true }
+  ).split(" ")[0];
 
   return (
     <div className="Season-container">
       <h1 className="Season-title">{`${seasonActual.id}`}</h1>
-      <p className="Season-jours-restants">Depuis {`${joursRestants}`} jours</p>
+      <p className="Season-jours-restants">
+        {" "}
+        {`Depuis ${joursRestants} jours`}
+      </p>
     </div>
   );
 }
