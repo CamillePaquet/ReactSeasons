@@ -1,0 +1,33 @@
+.Modal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  margin: auto;
+  border-radius: 20px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 40px;
+  background-color: rgb(97, 134, 158);
+  width: fit-content;
+  height: fit-content;
+  box-shadow: rgba(0, 0, 0, 0.473) 0px 7px 29px 0px;
+}
+
+.Modal-titre {
+  color: rgb(36, 68, 77);
+  margin: 0;
+}
+
+.Modal-duree {
+  color: rgb(148, 224, 208);
+  font-size: 25px;
+  margin: 2px;
+}
+
+.Modal-restant {
+  color: rgb(36, 68, 77);
+}

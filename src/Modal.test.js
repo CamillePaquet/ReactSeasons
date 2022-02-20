@@ -19,3 +19,29 @@ describe(Modal.name, () => {
     jest.useRealTimers();
   });
 });
+
+describe("on `What's the next?` button click", () => {
+  beforeAll(() => {
+    jest.useFakeTimers("modern");
+    jest.setSystemTime(new Date(2022, 1, 10));
+  });
+  beforeEach(() => {
+    render(<Modal today={new Date()}></Modal>);
+    fireEvent.click(screen.getByRole("button", { name: "Et après ?" }));
+  });
+
+  it("does not render a button with `What's the next?` label", () => {
+    expect(
+      screen.queryByRole("button", { name: "Et après ?" })
+    ).not.toBeInTheDocument();
+  });
+
+  it("renders a button with `OK, je vais être patient...` label", () => {
+    expect(
+      screen.getByRole("button", {
+        name: "Ok, je vais être patient !",
+        hidden: true,
+      })
+    ).toBeInTheDocument();
+  });
+});

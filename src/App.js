@@ -1,21 +1,23 @@
 import Season from "./components/Season.js";
+import Modal from "./components/Modal.js";
 import "./App.css";
-import React, { lazy, Suspense } from "react";
-
-import logo from "../assets/seasons.svg";
+import logo from "./assets/seasons.svg";
+import NextSeason from "./components/NextSeason.js";
+import React, { useState, lazy, Suspense } from "react";
 
 function App() {
   var today = new Date();
-
-  const Modal = lazy(() => import("./components/Modal"));
 
   return (
     <div className="App">
       <img className="logo" src={logo} alt="" />
       <Season today={today}></Season>
-      <Suspense fallback={<div>Chargement...</div>}>
-        <Modal today={today}></Modal>
-      </Suspense>
+      <Modal>
+        <Suspense fallback={<div>Chargement...</div>}>
+          {" "}
+          <NextSeason today={today} />{" "}
+        </Suspense>
+      </Modal>
     </div>
   );
 }
