@@ -1,12 +1,7 @@
 import React, { useState, lazy, Suspense } from "react";
 import "./Modal.css";
 
-const seasons = [
-  { id: "Hiver", fin: "19/3/2022", debut: "21/12/2021" },
-  { id: "Printemps", fin: "20/6/2022", debut: "20/3/2022" },
-  { id: "Ete", fin: "22/11/2022", debut: "21/6/2022" },
-  { id: "Automne", fin: "20/12/2022", debut: "23/9/2022" },
-];
+import seasons from "../seasons.json";
 
 function Modal(props, children) {
   const today = props.today;
